@@ -1,0 +1,14 @@
+---
+- name: Open Ports
+  hosts: linux
+
+  tasks:
+    - name: Execute netstat command
+      command: netstat -tln
+      register: netstat_output
+      changed_when: false
+      ignore_errors: true
+
+    - name: Display Listening Ports
+      debug:
+        msg: "{{ netstat_output.stdout_lines }}"
