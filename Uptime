@@ -1,0 +1,10 @@
+---
+  - name: host uptime
+    hosts: linux
+    tasks:
+      - name:  Uptime
+        register: uptimeoutput
+        command: "uptime"
+
+      - debug:
+          var: uptimeoutput.stdout_lines
