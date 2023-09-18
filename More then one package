@@ -1,0 +1,14 @@
+- name: latest verison of requested packages
+#  user: skywalker
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install more then one package or comment out if not 
+      dnf:
+        name:
+          - firewalld
+          - httpd
+          - mariadb-server
+          - 
+          - 
+        state: latest
