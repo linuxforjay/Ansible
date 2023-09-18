@@ -1,0 +1,14 @@
+---
+- name: Immutable for on important files
+  hosts: linux
+  become: yes  
+
+  tasks:
+    - name: Set unimmutable attribute on /etc/passwd
+      command: chattr -i /etc/passwd
+
+    - name: Set unimmutable attribute on /etc/shadow
+      command: chattr -i /etc/shadow
+
+    - name: Set unimmutable attribute on /etc/gshadow
+      command: chattr -i /etc/gshadow
