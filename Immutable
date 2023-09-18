@@ -1,0 +1,15 @@
+---
+- name: Harden important files
+  hosts: linux
+  become: yes  
+
+  tasks:
+    - name: Set immutable attribute on /etc/passwd
+      command: chattr +i /etc/passwd
+
+    - name: Set immutable attribute on /etc/shadow
+      command: chattr +i /etc/shadow
+
+    - name: Set immutable attribute on /etc/gshadow
+      command: chattr +i /etc/gshadow
+
