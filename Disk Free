@@ -1,6 +1,6 @@
 ---
 - name: Check Disk Usage
-  hosts: <target_host>
+  hosts: all
   gather_facts: yes
   tasks:
     - name: Execute df -h command
