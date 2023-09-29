@@ -4,7 +4,7 @@
 
   tasks:
     - name: Execute netstat command
-      command: netstat -tln
+      command: netstat -tulpn
       register: netstat_output
       changed_when: false
       ignore_errors: true
