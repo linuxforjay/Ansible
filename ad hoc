@@ -1,1 +1,2 @@
-ansible all -a "realm list"
+ansible server -a "realm list"
+ansible server -a "cat /etc/resolv.conf"
