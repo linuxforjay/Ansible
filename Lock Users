@@ -1,0 +1,21 @@
+---
+- name: Lock User Accounts with Empty Passwords
+  hosts: server 
+  become: yes 
+
+  tasks:
+    - name: Identify User Accounts with Empty Passwords
+      command: "awk -F: '($2 == \"\" || $2 == \"!!\") {print $1}' /etc/shadow"
+      register: empty_password_users
+      changed_when: false  
+
+    - name: Lock User Accounts with Empty Passwords
+      command: "passwd -l {{ item }}"
+      loop: "{{ empty_password_users.stdout_lines }}"
+      when: empty_password_users.stdout_lines | length > 0
+      ignore_errors: true
+
+    - name: Display Locked Users
+      debug:
+        var: empty_password_users.stdout_lines
+      when: empty_password_users.stdout_lines | length > 0
