@@ -1,0 +1,18 @@
+---
+- name: Disable IPv6 and Verify
+  hosts: all
+  become: yes
+  tasks:
+    - name: Disable IPv6
+      shell: sudo nmcli connection modify ens192 ipv6.method "disabled"
+      
+    - name: Bring up the network connection
+      shell: sudo nmcli connection up ens192
+      
+    - name: Verify IPv6 is disabled
+      shell: sudo cat /proc/sys/net/ipv6/conf/ens192/disable_ipv6
+      register: ipv6_status
+      
+    - name: Display the IPv6 status
+      debug:
+        var: ipv6_status.stdout_lines
