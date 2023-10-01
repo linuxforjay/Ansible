@@ -1,2 +1,4 @@
 ansible server -a "realm list"
 ansible server -a "cat /etc/resolv.conf"
+ansible server -a "sudo nmcli connection show"
+
