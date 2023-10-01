@@ -1,0 +1,11 @@
+---
+- name: List all firewall services/ports
+  hosts: all
+  become: yes
+  tasks:
+    - name: Firewall-cmd command
+      command: sudo firewall-cmd --list-all
+      register: firewall_output
+    - name: Display firewall output
+      debug:
+        var: firewall_output.stdout_lines
