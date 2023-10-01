@@ -1,0 +1,11 @@
+---
+- name: User activity
+  hosts: all
+  become: yes
+  tasks:
+    - name: Run w command
+      command: w
+      register: w_output
+    - name: Display w command output
+      debug:
+        var: w_output.stdout_lines
