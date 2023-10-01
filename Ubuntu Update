@@ -1,0 +1,9 @@
+---
+- name: update OS for Ubuntu
+  hosts: ubuntu
+  become: yes
+  tasks:
+    - name: ensure that Ubuntu is updated
+      apt:
+        name: '*'
+        state: latest
