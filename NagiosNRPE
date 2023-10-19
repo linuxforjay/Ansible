@@ -1,0 +1,48 @@
+---
+- name: Configure NRPE on Linux Server
+  hosts: server
+  become: yes
+  tasks:
+    - name: Install Epel repo
+      dnf:
+        name: epel-release
+        state: present
+
+    - name: Install NRPE and Nagios plugins
+      dnf:
+        name:
+          - nrpe
+          - nagios-plugins-nrpe
+        state: present
+
+    - name: Modify NRPE configuration file 
+      lineinfile:
+        path: /etc/nagios/nrpe.cfg
+        regexp: '^allowed_hosts='
+        line: 'allowed_hosts=10.1.15.83' #replace with Nagios server
+      become: yes
+
+    - name: Open port 5666 in firewall
+      firewalld:
+        port: 5666/tcp
+        permanent: yes
+        state: enabled
+
+    - name: Reload firewall settings
+      service:
+        name: firewalld
+        state: restarted
+
+    - name: Enable and start NRPE service
+      service:
+        name: nrpe
+        enabled: yes
+        state: started
+
+    - name: Check for NRPE package
+      command: "sudo rpm -qa nrpe"
+      register: nrpe_package
+
+    - name: Display NRPE package information
+      debug:
+        var: nrpe_package.stdout_lines
