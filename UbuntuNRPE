@@ -1,0 +1,46 @@
+---
+- name: Configure NRPE on Ubuntu Server
+  hosts: ubuntu
+  become: yes
+  tasks:
+    - name: Update APT package cache
+      command: "apt-get update"
+      become: yes
+
+    - name: Upgrade installed packages
+      command: "apt-get upgrade -y"
+      become: yes
+
+    - name: Install NRPE and Nagios plugins
+      apt:
+        name:
+          - nagios-nrpe-server
+          - nagios-plugins
+        state: present
+
+    - name: Modify NRPE configuration
+      lineinfile:
+        path: /etc/nagios/nrpe.cfg
+        regexp: '^allowed_hosts='
+        line: 'allowed_hosts=10.1.15.118'
+      become: yes
+
+    - name: Open port 5666 in firewall (ufw)
+      ufw:
+        rule: allow
+        port: 5666
+        state: enabled
+
+    - name: Enable and start NRPE service
+      service:
+        name: nagios-nrpe-server
+        enabled: yes
+        state: started
+
+    - name: Check for NRPE package
+      shell: dpkg -l | grep -i nagios-nrpe-server
+      register: nrpe_package
+
+    - name: Display NRPE package information
+      debug:
+        var: nrpe_package.stdout_lines
