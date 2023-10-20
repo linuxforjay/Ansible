@@ -1,6 +1,6 @@
 ---
 - name: Disable IPv6 and Verify
-  hosts: red
+  hosts: redhat
   become: yes
   tasks:
     - name: Disable IPv6
