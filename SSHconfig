@@ -1,5 +1,5 @@
 - name: Enhance SSH Security
-  hosts: server
+  hosts: rehdat
   become: yes
 
   tasks:
