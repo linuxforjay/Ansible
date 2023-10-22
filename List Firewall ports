@@ -1,6 +1,6 @@
 ---
 - name: List all firewall services/ports
-  hosts: all
+  hosts: redhat
   become: yes
   tasks:
     - name: Firewall-cmd command
