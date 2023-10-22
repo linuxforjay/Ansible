@@ -1,6 +1,6 @@
 ---
 - name: Configure NRPE on Linux Server
-  hosts: server
+  hosts: redhat
   become: yes
   tasks:
     - name: Install Epel repo
