@@ -1,6 +1,6 @@
 ---
  - name: update system OS
-   hosts: all
+   hosts: redhat
    tasks: 
      - name: ensure that system OS is up-to-date
        dnf: 
