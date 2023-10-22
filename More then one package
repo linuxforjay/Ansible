@@ -1,5 +1,4 @@
 - name: latest verison of requested packages
-#  user: skywalker
   hosts: redhat
   become: yes
   tasks:
