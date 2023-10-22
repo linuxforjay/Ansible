@@ -1,6 +1,6 @@
 ---
 - name: Harden important files
-  hosts: linux
+  hosts: all
   become: yes  
 
   tasks:
