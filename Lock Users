@@ -1,6 +1,6 @@
 ---
 - name: Lock User Accounts with Empty Passwords
-  hosts: server 
+  hosts: all
   become: yes 
 
   tasks:
