@@ -1,6 +1,6 @@
 ---
   - name: host uptime
-    hosts: linux
+    hosts: all
     tasks:
       - name:  Uptime
         register: uptimeoutput
