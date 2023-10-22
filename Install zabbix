@@ -37,7 +37,7 @@
       lineinfile:
         path: /etc/zabbix/zabbix_agentd.conf
         regexp: '^Server='
-        line: 'Server=10.1.15.84'
+        line: 'Server=xx.x.xx.xx'
 
     - name: Enable/Start Agent service
       systemd:
