@@ -1,6 +1,6 @@
 - name: latest verison of requested packages
 #  user: skywalker
-  hosts: all
+  hosts: redhat
   become: yes
   tasks:
     - name: Install more then one package or comment out if not 
