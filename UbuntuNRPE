@@ -18,7 +18,7 @@
           - nagios-plugins
         state: present
 
-    - name: Modify NRPE configuration
+    - name: Edit NRPE configuration
       lineinfile:
         path: /etc/nagios/nrpe.cfg
         regexp: '^allowed_hosts='
