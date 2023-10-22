@@ -1,6 +1,6 @@
 ---
 - name: Install/Config Zabbix Agent
-  hosts: all
+  hosts: redhat
   become: yes
   tasks:
     - name: Import Zabbix GPG key
