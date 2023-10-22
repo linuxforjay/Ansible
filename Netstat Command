@@ -1,6 +1,6 @@
 ---
 - name: Open Ports
-  hosts: linux
+  hosts: rehdat
 
   tasks:
     - name: Execute netstat command
