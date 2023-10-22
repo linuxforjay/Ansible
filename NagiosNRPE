@@ -19,7 +19,7 @@
       lineinfile:
         path: /etc/nagios/nrpe.cfg
         regexp: '^allowed_hosts='
-        line: 'allowed_hosts=10.1.15.83' #replace with Nagios server
+        line: 'allowed_hosts=xx.x.xx.xx' #replace with Nagios server
       become: yes
 
     - name: Open port 5666 in firewall
