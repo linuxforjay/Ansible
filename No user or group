@@ -1,6 +1,6 @@
 ---
 - name: Find Files and Directories with No User or Group
-  hosts: server
+  hosts: redhat
   become: yes
   gather_facts: no
 
